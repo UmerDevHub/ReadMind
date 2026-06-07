@@ -12,82 +12,110 @@
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #ffffff;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 5%;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0;
-            overflow: hidden;
+            gap: 10px;
         }
 
-        .login-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.3s ease;
-        }
-
-        .login-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .logo-icon {
-            font-size: 3rem;
+        .navbar-brand i {
             background: -webkit-linear-gradient(#00c6ff, #0072ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .nav-btn-primary {
+            background: -webkit-linear-gradient(45deg, #00c6ff, #0072ff);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+        }
+
+        .nav-btn-primary:hover {
+            background: -webkit-linear-gradient(45deg, #0072ff, #00c6ff);
+            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        h1 {
-            font-weight: 700;
-            font-size: 2rem;
-            margin-bottom: 10px;
+        .text-gradient {
+            background: -webkit-linear-gradient(#00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        p {
+        .hero-subtitle {
+            font-size: 1.2rem;
             color: #b0bec5;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .btn-github {
-            background-color: #24292e;
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-decoration: none;
-        }
-
-        .btn-github:hover {
-            background-color: #2b3137;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            color: #fff;
-        }
-
+        /* Modals for Login/Signup (Simulated via Glassmorphism Cards) */
         .floating-shapes {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .shape {
@@ -99,44 +127,65 @@
 
         .shape-1 {
             background: #00c6ff;
-            width: 300px;
-            height: 300px;
-            top: -100px;
+            width: 400px;
+            height: 400px;
+            top: 10%;
             left: -100px;
         }
 
         .shape-2 {
             background: #0072ff;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             bottom: -150px;
             right: -100px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Floating Background Shapes -->
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
     </div>
 
-    <div class="login-card">
-        <i class="fa-solid fa-brain logo-icon"></i>
-        <h1>ReadMind</h1>
-        <p>AI-Powered GitHub Profile & Repository Optimization SaaS.</p>
-        
-        <a href="#" class="btn-github" onclick="handleLogin(event)">
-            <i class="fa-brands fa-github fa-lg"></i>
-            Continue with GitHub
-        </a>
-    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-brain"></i> ReadMind
+            </a>
+            <div class="d-flex ms-auto">
+                <a href="#" class="nav-btn d-none d-sm-inline-block" onclick="handleAuth(event, 'Login')">Log in</a>
+                <a href="#" class="nav-btn nav-btn-primary" onclick="handleAuth(event, 'Sign up')">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Supercharge your GitHub with <span class="text-gradient">AI Power</span></h1>
+            <p class="hero-subtitle">ReadMind automatically generates stunning READMEs, optimizes your profile, and provides repository insights to make you stand out as a top-tier developer.</p>
+            
+            <div>
+                <a href="#" class="nav-btn nav-btn-primary px-4 py-3 fs-5 me-3" onclick="handleAuth(event, 'Get Started')">
+                    Get Started for Free
+                </a>
+                <a href="https://github.com/UmerDevHub/ReadMind" target="_blank" class="nav-btn px-4 py-3 fs-5">
+                    <i class="fa-brands fa-github me-2"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function handleLogin(e) {
+        function handleAuth(e, actionType) {
             e.preventDefault();
-            // This will later redirect to your backend OAuth route
-            alert("GitHub OAuth integration coming soon! You will be redirected to /api/auth/github.");
+            // This will later show a modal or redirect to the login/oauth page
+            alert(`${actionType} clicked! In a full implementation, this will open a sign-in modal or redirect to GitHub OAuth.`);
         }
     </script>
 </body>
