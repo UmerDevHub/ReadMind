@@ -17,7 +17,7 @@ ReadMind is a high-utility, full-stack SaaS application designed to automate the
 ## 🛠️ Installation
 Currently, the project is under active development. You can clone the repository to check out the structure:
 ```bash
-git clone https://github.com/yourusername/readmind.git
+git clone https://github.com/UmerDevHub/readmind.git
 cd ReadMind
 ```
 
